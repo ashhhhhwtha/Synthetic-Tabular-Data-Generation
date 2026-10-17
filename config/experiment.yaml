@@ -1,0 +1,22 @@
+seeds: [0, 1, 2]
+split_seed: 0
+sizes: [1.0]             # synthetic size as a multiple of train size; must include 1.0
+vae:
+  latent_sweep: [8, 32, 128]
+  main_latent: 32
+  hidden: 128
+  beta: 1.0
+  lr: 0.001
+  batch_size: 512
+  max_epochs: 100
+  patience: 10
+xgb:
+  n_estimators: 200
+  max_depth: 6
+  learning_rate: 0.1
+detection: true
+sdv:
+  epochs: 100
+length:                  # used by run_length.py
+  checkpoints: [25, 50, 100, 200]
+  latent: 32

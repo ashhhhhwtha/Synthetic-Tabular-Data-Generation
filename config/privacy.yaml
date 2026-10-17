@@ -1,0 +1,7 @@
+# FROZEN before any synthetic data is generated. run_all.py stores a hash of this
+# file on first run and refuses to continue if it changes (override: --allow-privacy-change,
+# which labels the run post hoc).
+metric: euclidean_preprocessed
+split_seed: 0        # seed for splitting validation into halves A and B
+quantile: 0.05       # threshold = 5th percentile of half-A nearest-train distances
+drop_exact_twins: true   # threshold computed on half-A rows without an exact twin in train

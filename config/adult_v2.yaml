@@ -1,0 +1,22 @@
+# Generator-side spec: same as adult.yaml plus a nonzero indicator for the capital columns.
+# Evaluation always uses adult.yaml so privacy and utility stay comparable.
+name: adult
+target: income
+positive_label: ">50K"
+rare_min_freq: 0.005        # categories rarer than this are grouped into "__rare__"
+columns:
+  age:             {type: numeric, integer: true}
+  workclass:       {type: categorical}
+  fnlwgt:          {drop: true}          # sampling weight
+  education:       {drop: true}          # redundant with education-num
+  education-num:   {type: numeric, integer: true}
+  marital-status:  {type: categorical}
+  occupation:      {type: categorical}
+  relationship:    {type: categorical}
+  race:            {type: categorical}
+  sex:             {type: categorical}
+  capital-gain:    {type: numeric, transform: log1p, integer: true, nonzero_indicator: true}   # top-coded at 99999
+  capital-loss:    {type: numeric, transform: log1p, integer: true, nonzero_indicator: true}
+  hours-per-week:  {type: numeric, integer: true}
+  native-country:  {type: categorical}
+  income:          {type: categorical, min_freq: 0}

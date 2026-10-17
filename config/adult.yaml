@@ -1,0 +1,21 @@
+# Column spec for Adult Income. All preprocessing is driven from this file.
+name: adult
+target: income
+positive_label: ">50K"
+rare_min_freq: 0.005        # categories rarer than this are grouped into "__rare__"
+columns:
+  age:             {type: numeric, integer: true}
+  workclass:       {type: categorical}
+  fnlwgt:          {drop: true}          # sampling weight
+  education:       {drop: true}          # redundant with education-num
+  education-num:   {type: numeric, integer: true}
+  marital-status:  {type: categorical}
+  occupation:      {type: categorical}
+  relationship:    {type: categorical}
+  race:            {type: categorical}
+  sex:             {type: categorical}
+  capital-gain:    {type: numeric, transform: log1p, integer: true}   # top-coded at 99999
+  capital-loss:    {type: numeric, transform: log1p, integer: true}
+  hours-per-week:  {type: numeric, integer: true}
+  native-country:  {type: categorical}
+  income:          {type: categorical, min_freq: 0}
