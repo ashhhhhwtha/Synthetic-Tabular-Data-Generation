@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+data/adult.csv
+data/fake_adult.csv
+results_quick/
+results_length_quick/
+near_a.py
